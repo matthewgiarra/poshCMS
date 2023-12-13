@@ -11,16 +11,24 @@ poshCMS functionality should include the following:
 3. Compare configuration item states with known configuration.
 
 # Implementation
-poshCMS expects a project configuration file, in CSV format, that contains a comprehensive list of files in the project directory structure. Each row in the configuration file corresponds to one file. The columns specify the URL, directory path, and cryptographic hash (e.g., md5 sum) of each file. Files without hashes are excluded from configuration auditing (e.g., for files not under configuration management). The user is responsible for maintaining the configuration file. 
+poshCMS expects a project configuration file, in CSV format, that contains a comprehensive list of files in the project directory structure. Each row in the configuration file corresponds to one file. The columns specify the URL, directory path, and cryptographic hash (e.g., md5 sum) of each file. Files without hashes are excluded from configuration auditing (e.g., for files not under configuration management). The user is responsible for maintaining the configuration file.
 
-| URL | Path | Hash
+## Example `poshCMS` configuration file
+
+Download the example file [here](https://github.com/matthewgiarra/poshCMS/blob/main/resources/files.csv).
+
+
+| URL | Path | Hash (md5) |
 | --- | --- | --- |
-| https://docs.google.com/document/d/1v8KMG0xYqCNGa5oZiL9seaO3111kAwyA | configuration_management/artifacts/001/sv_spec.docx |fe04b5b4e0e97a17de5055378674fbdd|
-| https://docs.google.com/spreadsheets/d/1x1ISIFU3Rn29gLZVaUMzCHtiMF02vgAG | configuration_management/artifacts/001/sv_spec_crm.xlsx | |
-| https://drive.google.com/file/d/1KR28MXyotrffL3cPL48PwwERs8xnRjrH | configuration_management/artifacts/001/sv_spec.json | |
-| https://docs.google.com/document/d/1iiOSjp4BJ1u_hlTC2VanbaShpBWz4rCA | configuration_management/artifacts/002/payload_spec.docx |88b22c123e2235e9bcbfd3c37682111c |
-| https://docs.google.com/spreadsheets/d/1SE325RHV_4iHDJOHhYnSTIimnnhu0wpM | configuration_management/artifacts/002/payload_spec_CRM.xlsx | |
-| https://drive.google.com/file/d/1m4qUDC4jooDfM54VMC-NnVv1WJ7x6qpI | configuration_management/artifacts/002/payload_spec.json | |
+| https://docs.google.com/document/d/1v8KMG0xYqCNGa5oZiL9seaO3111kAwyA | configuration_management/artifacts/001/system_spec.docx | fe04b5b4e0e97a17de5055378674fbdd |
+| https://docs.google.com/spreadsheets/d/1x1ISIFU3Rn29gLZVaUMzCHtiMF02vgAG | configuration_management/artifacts/001/system_spec_crm.xlsx |  |
+| https://drive.google.com/file/d/1KR28MXyotrffL3cPL48PwwERs8xnRjrH | configuration_management/artifacts/001/system_spec.json |  |
+| https://docs.google.com/document/d/1iiOSjp4BJ1u_hlTC2VanbaShpBWz4rCA | configuration_management/artifacts/002/subsystem_spec.docx | 88b22c123e2235e9bcbfd3c37682111c |
+| https://docs.google.com/spreadsheets/d/1SE325RHV_4iHDJOHhYnSTIimnnhu0wpM | configuration_management/artifacts/002/subsystem_spec_CRM.xlsx |  |
+| https://drive.google.com/file/d/1m4qUDC4jooDfM54VMC-NnVv1WJ7x6qpI | configuration_management/artifacts/002/subsystem_spec.json |  |
+| https://docs.google.com/document/d/18KGPs6g1lsD_z-h9iXkotiH01wbTZ5nc | configuration_management/artifacts/003/component_icd.docx | e1a089680b64fdedf4682542145bb242 |
+| https://docs.google.com/spreadsheets/d/1zR3g5pphen72Dm1ja15RnKf7nWdVvtT_ | configuration_management/artifacts/003/component_icd_crm.xlsx |  |
+| https://drive.google.com/file/d/1SkVqsC0lRbF_ueYZLLMlAt_dQrHg2-9B | configuration_management/artifacts/003/component_icd.json |  |
 
 ## Downloading files: `poshcms download`
 Features 1 and 2 are executed via the positional argument `download`:
