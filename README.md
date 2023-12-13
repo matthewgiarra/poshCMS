@@ -1,5 +1,5 @@
 # poshCMS
-Powershell-based configuration management tools
+Powershell-based content management tools
 
 # Overview
 poshCMS is a collection of tools for performing content management tasks on systems with limited software resources.
@@ -11,7 +11,9 @@ poshCMS functionality should include the following:
 3. Compare configuration item states with known configuration.
 
 # Implementation
-poshCMS expects a project configuration file, in CSV format, that contains a comprehensive list of files in the project directory structure. Each row in the configuration file corresponds to one file. The columns specify the URL, directory path, and cryptographic hash (e.g., md5 sum) of each file. Files without hashes are excluded from configuration auditing (e.g., for files not under configuration management). The user is responsible for maintaining the configuration file.
+poshCMS expects a project configuration file, in CSV format, that contains a comprehensive list of files in the project directory structure. Each row in the configuration file corresponds to one file. The columns specify the URL and directory path of each file, and cryptographic hash (e.g., md5 sum) of each configuration item. Files without hashes are excluded from configuration auditing (e.g., for files not under configuration management). The user is responsible for maintaining the configuration file.
+
+The following sections describe the format of the `poshCMS` configuration file, and the functional behaviors of `poshCMS`.
 
 ## Example `poshCMS` configuration file
 
@@ -28,6 +30,12 @@ Download the example file [here](https://github.com/matthewgiarra/poshCMS/blob/e
 | https://docs.google.com/document/d/18KGPs6g1lsD_z-h9iXkotiH01wbTZ5nc | configuration_management/artifacts/003/component_icd.docx | e1a089680b64fdedf4682542145bb242 |
 | https://docs.google.com/spreadsheets/d/1zR3g5pphen72Dm1ja15RnKf7nWdVvtT_ | configuration_management/artifacts/003/component_icd_crm.xlsx |  |
 | https://drive.google.com/file/d/1SkVqsC0lRbF_ueYZLLMlAt_dQrHg2-9B | configuration_management/artifacts/003/component_icd.json |  |
+
+# `poshCMS` functional behaviors
+
+`poshcms download`: Download project files, specified in the `poshCMS` configuration file, from a web-based filesystem.
+
+`poshcms audit`: Compare states of configuration items with known configuration. 
 
 ## Downloading files: `poshcms download`
 Features 1 and 2 are executed via the positional argument `download`:
