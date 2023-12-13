@@ -15,8 +15,7 @@ poshCMS expects a project configuration file, in CSV format, that contains a com
 
 ## Example `poshCMS` configuration file
 
-Download the example file [here](https://github.com/matthewgiarra/poshCMS/blob/main/resources/files.csv).
-
+Download the example file [here](https://github.com/matthewgiarra/poshCMS/blob/e8f1250f899ec969634e388e08df0c2e063c0e3f/resources/config.csv).
 
 | URL | Path | Hash (md5) |
 | --- | --- | --- |
