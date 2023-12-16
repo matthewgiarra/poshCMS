@@ -7,8 +7,8 @@ poshCMS is a collection of tools for performing content management tasks on syst
 # Features
 poshCMS functionality should include the following: 
 1. Download project files from web-based filesystem.
-2. Maintain directory structure of files from web-based filesystem.
-3. Compare configuration item states with known configuration.
+2. Maintain directory structure of files from web-based filesystem, even if the web-based filesystem itself doesn't support downloading directories.
+3. Compare configuration item states with known a configuration.
 
 # Implementation
 poshCMS expects a project configuration file, in CSV format, that contains a comprehensive list of files in the project directory structure. Each row in the configuration file corresponds to one file. The columns specify the URL and directory path of each file, and cryptographic hash (e.g., md5 sum) of each configuration item. Files without hashes are excluded from configuration auditing (e.g., for files not under configuration management). The user is responsible for maintaining the configuration file.
@@ -17,7 +17,7 @@ The following sections describe the format of the `poshCMS` configuration file, 
 
 ## Example `poshCMS` configuration file
 
-Download the example file [here](https://github.com/matthewgiarra/poshCMS/blob/e8f1250f899ec969634e388e08df0c2e063c0e3f/resources/config.csv).
+Download an example `poshCMS` configuration file [here](https://github.com/matthewgiarra/poshCMS/blob/e8f1250f899ec969634e388e08df0c2e063c0e3f/resources/config.csv). Its content is reproduced in the following table. 
 
 | URL | Path | Hash (md5) |
 | --- | --- | --- |
@@ -38,7 +38,7 @@ Download the example file [here](https://github.com/matthewgiarra/poshCMS/blob/e
 `poshcms audit`: Compare states of configuration items with known configuration. 
 
 ## Downloading files: `poshcms download`
-Features 1 and 2 are executed via the positional argument `download`:
+Download files to a specified directory structure using the positional argument `download`:
 
 ```bash
 ./poshcms download --cfg <config file> --dir <project directory>
@@ -48,7 +48,7 @@ Features 1 and 2 are executed via the positional argument `download`:
 `poshcms download` does the following:
 
 1. Reads the file specified by `<config file>`
-2. Creates a directory structure (under `<project directory>`) implied by the list of file paths specified in the `Path` column of `<config file>`
+2. Creates a directory structure (within `<project directory>`) implied by the list of file paths specified in the `Path` column of `<config file>`
 3. Downloads each file specified in the `URL` column of `<config file>`, and saves it to the path specified in the corresponding `Path` column.
 
 Example:
@@ -69,12 +69,12 @@ Therefore, the following commands are all equivalent:
 ./poshcms download --cfg ./config.csv --dir .
 ```
 
-`poshcms download` exits if:
+`poshcms download` exits without doing anything if:
 1. The file specified by `--cfg` is not available for reading
 2. The path specified by `--dir` is not available for writing
 
 ## Configuration auditing: `poshcms audit`
-Feature 3 ("Compare configuration item states with known configuration") is executed via the positional argument `audit`:
+Compare configuration item states with a known configuration using the positional argument `audit`:
 
 ```bash
 ./poshcms audit --cfg <config file> --dir <project directory>
@@ -107,7 +107,6 @@ Therefore, the following commands are all equivalent:
 ./poshcms audit --cfg ./config.csv --dir .
 ```
 
-`poshcms audit` exits if:
+`poshcms audit` exits without doing anything if:
 1. The file specified by `--cfg` is not available for reading
-2. The files in the directory specified by `--dir` are not available for reading
 
