@@ -2,16 +2,16 @@
 Powershell-based content management tools
 
 # Overview
-poshCMS is a collection of tools for performing content management tasks on systems with limited software resources.
+`poshCMS` is a collection of tools for performing content management tasks on systems with limited software resources.
 
 # Features
-poshCMS functionality should include the following: 
+`poshCMS` functionality will include the following:
 1. Download project files from web-based filesystem.
 2. Maintain directory structure of files from web-based filesystem, even if the web-based filesystem itself doesn't support downloading directories.
 3. Compare configuration item states with known a configuration.
 
 # Implementation
-poshCMS expects a project configuration file, in CSV format, that contains a comprehensive list of files in the project directory structure. Each row in the configuration file corresponds to one file. The columns specify the URL and directory path of each file, and cryptographic hash (e.g., md5 sum) of each configuration item. Files without hashes are excluded from configuration auditing (e.g., for files not under configuration management). The user is responsible for maintaining the configuration file.
+`poshCMS` expects a project configuration file, in CSV format, that contains a comprehensive list of files in the project directory structure. Each row in the configuration file corresponds to one file. The columns specify the URL and directory path of each file, and cryptographic hash (e.g., md5 sum) of each configuration item. Files without hashes are excluded from configuration auditing (e.g., for files not under configuration management). The user is responsible for maintaining the configuration file.
 
 The following sections describe the format of the `poshCMS` configuration file, and the functional behaviors of `poshCMS`.
 
